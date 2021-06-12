@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "proxy": "http://127.0.0.1:5000",
+  "proxy":"http://127.0.0.1:5000",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,13 +11,9 @@
     "react": "^17.0.2",
     "react-bootstrap": "*",
     "react-dom": "^17.0.2",
-    "react-redux": "*",
     "react-router-bootstrap": "*",
     "react-router-dom": "*",
     "react-scripts": "4.0.3",
-    "redux": "*",
-    "redux-devtools-extension": "*",
-    "redux-thunk": "*",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
