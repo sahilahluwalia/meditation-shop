@@ -20,6 +20,7 @@
     "dotenv": "*",
     "express": "*",
     "express-async-handler": "*",
+    "jsonwebtoken": "*",
     "mongoose": "*"
   },
   "devDependencies": {

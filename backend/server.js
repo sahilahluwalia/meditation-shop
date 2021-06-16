@@ -2,19 +2,36 @@ import express from 'express';
 import dotenv from 'dotenv';
 import colors from 'colors';
 import connectDB from './config/db.js';
-import productRoutes from './routes/productRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+//import bodyParser from 'body-parser';
+import productRoutes from './routes/productRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 dotenv.config();
 
 connectDB();
-
 const app = express();
+
+//app.use(bodyParser.urlencoded({ extended: false }));
+//app.use(bodyParser.json());
+
+app.use(express.json());
 
 app.get('/', (req, res) => {
   res.send('API is sending...................');
 });
 
 app.use('/api/products', productRoutes);
+app.use('/api/users', userRoutes);
+
+app.post('/data', function (req, res) {
+  console.log(res.body);
+  console.log(req.body);
+  res.status(200).json({ status: 'Success !', data: { body: req.body } });
+});
+
+app.post('/mydata', function (req, res) {
+  res.send('POST request to homepage');
+});
 
 app.use(notFound);
 app.use(errorHandler);
