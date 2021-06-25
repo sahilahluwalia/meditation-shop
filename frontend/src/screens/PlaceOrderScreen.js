@@ -11,13 +11,17 @@ const PlaceOrderScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart);
 
   //calculate prices
-  cart.itemsPrice = cart.cartItems
-    .reduce((acc, item) => acc + item.price * item.qty, 0)
-    .toFixed(2);
+  const addDecimals = (num) => {
+    return (Math.round(num * 100) / 100).toFixed(2);
+  };
 
-  cart.shippingPrice = cart.itemsPrice < 100 ? 0 : 100;
+  cart.itemsPrice = addDecimals(
+    cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+  );
 
-  cart.taxPrice = Number((0.15 * cart.itemsPrice).toFixed(2));
+  cart.shippingPrice = addDecimals(cart.itemsPrice < 100 ? 0 : 100);
+
+  cart.taxPrice = addDecimals(Number((0.15 * cart.itemsPrice).toFixed(2)));
 
   cart.totalPrice = (
     Number(cart.itemsPrice) +
@@ -137,11 +141,11 @@ const PlaceOrderScreen = ({ history }) => {
                   <Col>${cart.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
-
+              {error && <Message variant='danger'>{error}</Message>}
               <ListGroup.Item>
                 <Button
                   type='button'
-                  classname='btn-block'
+                  className='btn-block'
                   disabled={cart.cartItems === 0}
                   onClick={placeOrderHandler}
                 >
