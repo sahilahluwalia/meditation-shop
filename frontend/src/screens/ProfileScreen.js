@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Table, Form, Button, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
@@ -62,9 +61,9 @@ const ProfileScreen = ({ location, history }) => {
       <Col md={3}>
         <h2>User Profile</h2>
 
-        {message && <Message variant='danger'>{message}</Message>}
-        {success && <Message variant='success'>{success}</Message>}
-        {/*error &&<Message variant='danger'>{error}</Message>*/}
+        {message && <h2>{message} </h2>}
+        {success && <h2>{success} </h2>}
+        {error && <h2>{error} </h2>}
         {loading && <Loader />}
         <Form onSubmit={submitHandler}>
           <Form.Group controlId='name'>

@@ -35,16 +35,14 @@ const CartScreen = ({ match, location, history }) => {
     history.push(`/login?redirect=shipping`);
   };
 
-  const mess = 'YOUR CART IS EMPTY';
-
   return (
     <Row>
       <Col md={8}>
         <h1>Shopping Cart</h1>
-        {cartItems.length === 1231230 ? (
-          <Message>
+        {cartItems.length === 0 ? (
+          <h2>
             Your cart is empty <Link to='/'>Go Back</Link>
-          </Message>
+          </h2>
         ) : (
           <ListGroup variant='flush'>
             {cartItems.map((item) => (

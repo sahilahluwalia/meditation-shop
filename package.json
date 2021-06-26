@@ -1,6 +1,6 @@
 {
   "name": "musicshop",
-  "proxy":"http://127.0.0.1:3000",
+  "proxy": "http://127.0.0.1:3000/",
   "version": "1.0.0",
   "description": "MERN meditationShop",
   "main": " server.js",
