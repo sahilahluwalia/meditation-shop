@@ -22,7 +22,8 @@
     "express": "*",
     "express-async-handler": "*",
     "jsonwebtoken": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "multer": "^1.4.2"
   },
   "devDependencies": {
     "concurrently": "*",
