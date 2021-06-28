@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import colors from 'colors';
 import connectDB from './config/db.js';
+import morgan from 'morgan';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoutes.js';
@@ -17,6 +18,7 @@ const app = express();
 //app.use(bodyParser.urlencoded({ extended: false }));
 //app.use(bodyParser.json());
 
+app.use(morgan('dev'));
 app.use(express.json());
 
 app.get('/', (req, res) => {
