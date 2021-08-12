@@ -1,5 +1,6 @@
 main {
   min-height: 80vh;
+  background-color: oldlace;
 }
 
 h3 {
@@ -14,3 +15,12 @@ h1 {
 .rating span {
   margin: 0.1rem;
 }
+
+h2 {
+  font-size: 1.4rem;
+  padding: 0.5rem 0;
+}
+
+body {}
+
+
