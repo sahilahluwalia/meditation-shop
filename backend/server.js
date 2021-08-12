@@ -21,9 +21,6 @@ const app = express();
 app.use(morgan('dev'));
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('API is sending...................');
-});
 
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
@@ -46,6 +43,22 @@ app.post('/data', function (req, res) {
 app.post('/mydata', function (req, res) {
   res.send('POST request to homepage');
 });
+
+const __dirname = path.resolve()
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '/frontend/build')))
+
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+  )
+}
+else{
+app.get('/', (req, res) => {
+  res.send('API is sending...................');
+});
+}
 
 app.use(notFound);
 app.use(errorHandler);
